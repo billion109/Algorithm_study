@@ -1,0 +1,30 @@
+from collections import defaultdict
+
+class Edge():
+    def __init__(self, t, w):
+        self.target_node = t
+        self.weight = w
+
+class Graph():
+    def __init__(self):
+        self.nodes = defaultdict(list)
+        
+    def add_edge(self, from_node, to_node, weight):
+        #nodes -> {A:[EdgeClass(target_node, weight)], ...}
+        self.nodes[from_node].append(Edge(to_node, weight))
+
+edges = [
+    ('A', 'C', 4),
+    ('A', 'B', 3),
+    ('B', 'C', 2),
+    ('B', 'D', 1),
+    ('C', 'D', 10),
+    ('C', 'E', 2),
+    ('D', 'E', 5),
+    ('D', 'F', 6),
+    ('E', 'F', 3)
+]
+
+graph = Graph()
+for edge in edges:
+    graph.add_edge(*edge)
